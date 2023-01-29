@@ -11,7 +11,7 @@ A platform for movie enthusiasts to share what they have watched, recommend and 
 
 ## Technologies
 
-- React.js for the front-end
+- Next.js for the front-end
 - Mantine for styling
 - Node.js for the back-end
 - MongoDB for the database
