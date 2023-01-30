@@ -1,6 +1,5 @@
-import { ActionIcon, Group, useMantineColorScheme } from "@mantine/core";
-import { IconSun, IconMoonStars } from "@tabler/icons";
-import { MoonStars, Sun } from "tabler-icons-react";
+import { ActionIcon, Group, useMantineColorScheme } from '@mantine/core';
+import { MoonStars, Sun } from 'tabler-icons-react';
 
 export function ColorSchemeToggle() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
