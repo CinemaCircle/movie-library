@@ -1,6 +1,7 @@
-import { Container, Image, Text, Title } from "@mantine/core";
+import { Button, Container, Image, Text, Title } from "@mantine/core";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { ArrowNarrowLeft } from "tabler-icons-react";
 
 const MoviePage = () => {
   const router = useRouter();
@@ -8,7 +9,14 @@ const MoviePage = () => {
 
   return (
     <Container>
-      <Link href="/">Back</Link>
+      <Button
+        component={Link}
+        href="/"
+        leftIcon={<ArrowNarrowLeft />}
+        variant="outline"
+      >
+        Back to dashboard
+      </Button>
       <h1>Movie Information</h1>
       <p>Movie ID: {id}</p>
       <Text size="xs">{year}</Text>
