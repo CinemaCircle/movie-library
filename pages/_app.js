@@ -1,13 +1,10 @@
-import { useState } from "react";
-import NextApp, { AppProps, AppContext } from "next/app";
-import { getCookie, setCookie } from "cookies-next";
-import Head from "next/head";
-import {
-  MantineProvider,
-  ColorScheme,
-  ColorSchemeProvider,
-} from "@mantine/core";
-import { NotificationsProvider } from "@mantine/notifications";
+import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
+import { getCookie, setCookie } from 'cookies-next';
+import NextApp from 'next/app';
+import { useState } from 'react';
+
+import WebsiteStructure from '../components/WebsiteStructure';
 
 export default function App(props) {
   const { Component, pageProps } = props;
@@ -24,15 +21,6 @@ export default function App(props) {
 
   return (
     <>
-      <Head>
-        <title>Movie library</title>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
-        />
-        <link rel="shortcut icon" href="/favicon.svg" />
-      </Head>
-
       <ColorSchemeProvider
         colorScheme={colorScheme}
         toggleColorScheme={toggleColorScheme}
@@ -43,7 +31,9 @@ export default function App(props) {
           withNormalizeCSS
         >
           <NotificationsProvider>
-            <Component {...pageProps} />
+            <WebsiteStructure>
+              <Component {...pageProps} />
+            </WebsiteStructure>
           </NotificationsProvider>
         </MantineProvider>
       </ColorSchemeProvider>
