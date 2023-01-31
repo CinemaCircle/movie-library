@@ -1,16 +1,55 @@
-import { Carousel } from "@mantine/carousel";
-import {
-  Button,
-  Container,
-  Paper,
-  Text,
-  Title,
-  useMantineTheme,
-} from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useCarouselStyles } from "./CarouselStyles";
+import { Carousel } from '@mantine/carousel';
+import { createStyles, Paper, Text, Title, useMantineTheme } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+export const useCarouselStyles = createStyles((theme) => ({
+  card: {
+    height: 300,
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    backgroundSize: "cover",
+    backgroundColor: 'black',
+    justifyContent: 'end',
+    padding: -1,
+    overflow: 'hidden',
+    backgroundPosition: "center",
+  },
+
+  title: {
+    fontWeight: 600,
+    color: theme.white,
+    fontSize: 20,
+  },
+
+  link: {
+    textDecoration: 'none',
+    background: 'linear-gradient(0deg, rgba(0,0,0,0.8513906783416492) 30%, rgba(0,0,0,0) 100%)',
+    padding: 10,
+    paddingBottom: 30,
+    paddingTop: 120,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    justifyContent: 'end',
+    transition: "all ease .3s",
+    width: '101%',
+    height: '101%',
+    ":hover": {
+      paddingBottom: 40,
+    }   
+  },
+
+  year: {
+    color: theme.white,
+    opacity: 0.7,
+    fontWeight: 700,
+    textTransform: "uppercase",
+  },
+}));
 
 function Card({ id, image, title, year }) {
   const { classes } = useCarouselStyles();
@@ -27,24 +66,18 @@ function Card({ id, image, title, year }) {
   return (
     <Paper
       shadow="md"
-      p="xl"
       radius="md"
       sx={{ backgroundImage: `url(${image})` }}
       className={classes.card}
     >
-      <div>
-        <Text className={classes.year} size="xs">
-          {year}
-        </Text>
-        <Title order={3} className={classes.title}>
-          {title}
-        </Title>
-      </div>
-      <Link href="/movie?id=[[id]]">
-        <Button variant="white" color="dark" onClick={handleClick}>
-          Read more
-        </Button>
-      </Link>
+    <Link href="/movie?id=[[id]]" className={classes.link}>
+      <Text className={classes.year} size="xs">
+        {year}
+      </Text>
+      <Title order={3} className={classes.title}>
+        {title}
+      </Title>
+    </Link>
     </Paper>
   );
 }
@@ -124,15 +157,13 @@ export function MovieCarousel() {
     </Carousel.Slide>
   ));
 
-  return (
-    <Container>
-      <Carousel
-        slideSize="25%"
-        breakpoints={[{ maxWidth: "sm", slideSize: "100%", slideGap: 4 }]}
+  return <Carousel
+        slideSize="16%"
+        breakpoints={[{ maxWidth: "sm", slideSize: "100%", slideGap: 14 }]}
         slideGap="xl"
         align="start"
         withIndicators
-        slidesToScroll={mobile ? 1 : 4}
+        slidesToScroll={mobile ? 1 : 6}
         styles={{
           indicator: {
             width: 12,
@@ -152,7 +183,5 @@ export function MovieCarousel() {
         }}
       >
         {slides}
-      </Carousel>
-    </Container>
-  );
+      </Carousel>;
 }
