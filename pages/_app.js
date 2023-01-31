@@ -1,10 +1,11 @@
-import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
-import { NotificationsProvider } from '@mantine/notifications';
-import { getCookie, setCookie } from 'cookies-next';
-import NextApp from 'next/app';
-import { useState } from 'react';
+import { ColorSchemeProvider, MantineProvider } from "@mantine/core";
+import { NotificationsProvider } from "@mantine/notifications";
+import { SessionProvider } from "next-auth/react";
+import { getCookie, setCookie } from "cookies-next";
+import NextApp from "next/app";
+import { useState } from "react";
 
-import WebsiteStructure from '../components/WebsiteStructure';
+import WebsiteStructure from "../components/WebsiteStructure";
 
 export default function App(props) {
   const { Component, pageProps } = props;
@@ -21,22 +22,24 @@ export default function App(props) {
 
   return (
     <>
-      <ColorSchemeProvider
-        colorScheme={colorScheme}
-        toggleColorScheme={toggleColorScheme}
-      >
-        <MantineProvider
-          theme={{ colorScheme }}
-          withGlobalStyles
-          withNormalizeCSS
+      <SessionProvider session={pageProps.session}>
+        <ColorSchemeProvider
+          colorScheme={colorScheme}
+          toggleColorScheme={toggleColorScheme}
         >
-          <NotificationsProvider>
-            <WebsiteStructure>
-              <Component {...pageProps} />
-            </WebsiteStructure>
-          </NotificationsProvider>
-        </MantineProvider>
-      </ColorSchemeProvider>
+          <MantineProvider
+            theme={{ colorScheme }}
+            withGlobalStyles
+            withNormalizeCSS
+          >
+            <NotificationsProvider>
+              <WebsiteStructure>
+                <Component {...pageProps} />
+              </WebsiteStructure>
+            </NotificationsProvider>
+          </MantineProvider>
+        </ColorSchemeProvider>
+      </SessionProvider>
     </>
   );
 }
