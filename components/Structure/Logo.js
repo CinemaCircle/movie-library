@@ -22,6 +22,6 @@ const useStyles = createStyles((theme) => ({
 export default function Logo(){
     const {classes} = useStyles();
     return <>
-        <Title inherit variant="text" className={classes.hashtag} component="span">#</Title><Title inherit className={classes.title} variant="gradient" component="span" gradient={{ from: 'orange', to: 'red' }}>{process.env.NEXT_PUBLIC_WEBSITE_TITLE}</Title>
+        <Title inherit variant="text" className={classes.hashtag} component="span">#</Title><Title inherit className={classes.title} variant="gradient" component="span" gradient={{ from: 'orange', to: 'red' }}>MustWatch</Title>
     </>
 }
