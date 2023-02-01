@@ -1,6 +1,8 @@
 const express = require("express");
+const colors = require("colors");
 const next = require("next");
 const { errorHandler } = require("./middleware/errorMiddleware");
+const connectDB = require("./config/db");
 
 const port = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -11,6 +13,8 @@ const handle = app.getRequestHandler();
 app
   .prepare()
   .then(() => {
+    connectDB();
+
     const server = express();
     const routes = require("./routes/getRoutes.js");
 
@@ -31,6 +35,6 @@ app
     });
   })
   .catch((ex) => {
-    console.err(ex.stack);
+    console.error(ex.stack);
     process.exit(1);
   });
