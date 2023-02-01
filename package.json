@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "nodemon server/index.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -23,8 +23,10 @@
     "embla-carousel-react": "^7.0.9",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
+    "express": "^4.18.2",
     "next": "13.1.6",
     "next-auth": "^4.19.1",
+    "nodemon": "^2.0.20",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tabler-icons-react": "^1.56.0"
