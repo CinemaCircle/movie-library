@@ -1,6 +1,6 @@
-import { MovieCarousel } from "@/components/MovieCarousel/MovieCarousel";
 
 import CarouselSection from "../components/MovieCarousel/CarouselSection";
+import { MovieCarousel } from "../components/MovieCarousel/MovieCarousel";
 import PageContainer from "../components/PageContainer";
 import { Welcome } from "../components/Welcome/Welcome";
 
